@@ -1,0 +1,10 @@
+<h3>Wishlist</h3>
+
+<div class="cart-item" *ngFor="let item of wishlist">
+    <span>{{item.name}}</span>
+    <span>{{item.price | currency}}</span>
+    <button (click)="deleteFromWishlist(productId)">Delete</button>
+</div>
+<button
+    *ngIf="wishlist && wishlist.length > 0"
+    (click)=clearWishlist()>Clear</button>

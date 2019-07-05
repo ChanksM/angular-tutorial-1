@@ -6,4 +6,6 @@
     <p *ngIf="product.description">{{product.description}}</p>
 
     <button (click)="addToCart(product)">Buy</button>
+    <button *ngIf="!ifExist(product)" (click)="addToWishlist(product)">Add to wishlist</button>
+    <button *ngIf="ifExist(product)" (click)="deleteFromWishlist(productId)">Delete from wishlist</button>
 </div>
