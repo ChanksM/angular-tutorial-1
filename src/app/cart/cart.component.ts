@@ -14,8 +14,13 @@ export class CartComponent implements OnInit {
     constructor(private cartService: CartService, private formBuilder: FormBuilder) {
         this.items = this.cartService.getItems();
         this.checkedForm = formBuilder.group( {
-            name: 'test',
-            address: ''
+            name: '',
+            address: formBuilder.group({
+                street: '',
+                city: '',
+                state: '',
+                zip: ''
+            })
         });
     }
 
