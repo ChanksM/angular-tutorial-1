@@ -34,4 +34,9 @@ export class CartComponent implements OnInit {
         console.log(value);
         this.checkedForm.reset();
     }
+
+    resetForm() {
+        this.checkedForm.get('name').setValue('Mushni');
+        this.checkedForm.get('address').setValue('Tbilisi');
+    }
 }
