@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
     constructor(private cartService: CartService, private formBuilder: FormBuilder) {
         this.items = this.cartService.getItems();
         this.checkedForm = formBuilder.group( {
-            name: '',
+            name: 'test',
             address: ''
         });
     }
@@ -36,7 +36,8 @@ export class CartComponent implements OnInit {
     }
 
     resetForm() {
-        this.checkedForm.get('name').setValue('Mushni');
-        this.checkedForm.get('address').setValue('Tbilisi');
+        this.checkedForm.patchValue({
+            name: 'Mushni'
+        });
     }
 }
