@@ -1,6 +1,6 @@
 import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-cart',
@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
     constructor(private cartService: CartService, private formBuilder: FormBuilder) {
         this.items = this.cartService.getItems();
         this.checkedForm = formBuilder.group( {
-            name: '',
+            name: ['', Validators.minLength(3)],
             address: formBuilder.group({
                 street: '',
                 city: '',
