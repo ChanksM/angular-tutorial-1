@@ -16,6 +16,10 @@ export class CartService {
         return this.items;
     }
 
+    deleteFromCart(productId) {
+        this.items.splice(productId, 1);
+    }
+
     clearCart() {
         this.items = [];
         return this.items;
