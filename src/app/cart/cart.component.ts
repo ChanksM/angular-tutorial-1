@@ -1,6 +1,6 @@
 import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-cart',
@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
     constructor(private cartService: CartService, private formBuilder: FormBuilder) {
         this.items = this.cartService.getItems();
         this.checkedForm = formBuilder.group( {
-            name: ['', Validators.minLength(3)],
+            name: ['', [Validators.minLength(4), this.forbiddenName()]],
             address: formBuilder.group({
                 street: '',
                 city: '',
@@ -25,6 +25,12 @@ export class CartComponent implements OnInit {
     }
 
     ngOnInit() { }
+
+    forbiddenName() {
+        return (formControl) => {
+            return formControl.value === 'Someone' ? {forbidden: {invalid: true}} : null;
+        };
+    }
 
     deleteFromCart(productId) {
         this.cartService.deleteFromCart(productId);
@@ -44,5 +50,9 @@ export class CartComponent implements OnInit {
         this.checkedForm.patchValue({
             name: 'Mushni'
         });
+    }
+
+    get name() {
+        return this.checkedForm.get('name') as FormControl;
     }
 }
