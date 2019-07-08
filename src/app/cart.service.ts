@@ -19,8 +19,9 @@ export class CartService {
         return this.items;
     }
 
-    deleteFromCart(productId) {
-        this.items.splice(productId, 1);
+    deleteFromCart(product) {
+        const index = this.items.indexOf(product);
+        this.items.splice(index, 1);
     }
 
     clearCart() {

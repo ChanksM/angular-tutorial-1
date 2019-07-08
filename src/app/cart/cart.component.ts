@@ -1,7 +1,6 @@
 import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
-
+import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 @Component({
     selector: 'app-cart',
     templateUrl: './cart.component.html',
@@ -9,8 +8,6 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 })
 
 export class CartComponent implements OnInit {
-    items;
-    checkedForm;
     constructor(private cartService: CartService, private formBuilder: FormBuilder) {
         this.items = this.cartService.getItems();
         this.checkedForm = formBuilder.group( {
@@ -20,11 +17,42 @@ export class CartComponent implements OnInit {
                 city: '',
                 state: '',
                 zip: ''
+            }, {
+                validators: this.crossValidation
             })
         });
     }
 
+    get name() {
+        return this.checkedForm.get('name') as FormControl;
+    }
+    get address() {
+        return this.checkedForm.get('address') as FormGroup;
+    }
+
+    items;
+    checkedForm;
+    static isZipOk(zip) {
+        return zip.length < 3;
+    }
+    static isCityOk(city) {
+        return city.charAt(0).toLowerCase() !== 'a';
+    }
+
     ngOnInit() { }
+
+    crossValidation(formGroup) {
+        const zip = formGroup.get('zip').value;
+        const zipStatus = CartComponent.isZipOk(zip);
+
+        const city = formGroup.get('city').value;
+        const cityStatus = CartComponent.isCityOk(city);
+
+        return cityStatus && zipStatus ? null : {
+            zipStatus,
+            cityStatus
+        };
+    }
 
     forbiddenName() {
         return (formControl) => {
@@ -32,8 +60,8 @@ export class CartComponent implements OnInit {
         };
     }
 
-    deleteFromCart(productId) {
-        this.cartService.deleteFromCart(productId);
+    deleteFromCart(product) {
+        this.cartService.deleteFromCart(product);
     }
 
     clearCart() {
@@ -50,9 +78,5 @@ export class CartComponent implements OnInit {
         this.checkedForm.patchValue({
             name: 'Mushni'
         });
-    }
-
-    get name() {
-        return this.checkedForm.get('name') as FormControl;
     }
 }

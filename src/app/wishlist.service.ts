@@ -21,8 +21,9 @@ export class WishlistService {
         return this.wishlist;
     }
 
-    deleteFromWishlist(productId) {
-        this.wishlist.splice(productId, 1);
+    deleteFromWishlist(product) {
+        const index = this.wishlist.indexOf(product);
+        this.wishlist.splice(index, 1);
     }
 
     clearWishlist() {
