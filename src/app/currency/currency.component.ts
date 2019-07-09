@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CurrencyService} from '../currency.service';
-import { importExpr } from '@angular/compiler/src/output/output_ast';
+import { CurrencyService } from '../currency.service';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-currency',
@@ -17,8 +17,8 @@ export class CurrencyComponent implements OnInit {
             this.rates.push(value);
         };
 
-        const complete = (value) => {
-            this.length = value;
+        const complete = () => {
+            this.length = this.rates.length;
         };
 
         const filterCallBack = ({value}) => value > 2;
@@ -26,8 +26,13 @@ export class CurrencyComponent implements OnInit {
 
         const Observer = this.currencyService.Observer;
         Observer
-        .filter(filterCallBack)
-        .map(mapCallBack)
-        .subscribe(action, complete);
+        .pipe(
+            filter(filterCallBack),
+            map(mapCallBack)
+        )
+        .subscribe({
+            next: action,
+            complete
+        });
     }
 }
