@@ -1,0 +1,72 @@
+<form [formGroup]="taskOneForm">
+    <div>
+        <label for="Email">* E-mail :</label>
+        <input id="Email" type="text" formControlName="Email" required>
+    </div>
+    <div>
+        <label for="Password">* Password :</label>
+        <input id="Password" type="Password" formControlName="Password" required>
+    </div>
+    <div>
+        <label for="ConfirmPassword">* Confirm Password :</label>
+        <input id="ConfirmPassword" type="Password" formControlName="ConfirmPassword" required>
+    </div>
+    <div>
+        <label for="Nickname">* Nickname :</label>
+        <input id="Nickname" type="text" formControlName="Nickname" required>
+    </div>
+    <div>
+        <label for="PhoneNumber">* Phone Number :</label>
+        <input id="PhoneNumber" type="text" formControlName="PhoneNumber" required>
+    </div>
+    <div>
+        <label for="Website">* Website :</label>
+        <input placeholder="Website" id="Website" type="text" formControlName="Website" required>
+    </div>
+    <div>
+        <input type="radio" required>
+        <label for="TermsAndService">I have read the <a href="#">agreement</a></label>
+    </div>
+    <div>
+        <button class="button" type="submit" [disabled]="taskOneForm.status === 'INVALID'">
+            Register
+        </button>
+    </div>
+</form>
+<div>
+    <p>
+        Email : {{taskOneForm.controls.Email.value}}
+    </p>
+    <p>
+        Password : {{taskOneForm.controls.Password.value}}
+    </p>
+    <p>
+        conf Pass : {{taskOneForm.controls.ConfirmPassword.value}}
+    </p>
+    <p>
+        Nickname : {{taskOneForm.controls.Nickname.value}}
+    </p>
+    <p>
+        phone num : {{taskOneForm.controls.PhoneNumber.value}}
+    </p>
+    <p>
+        Website : {{taskOneForm.controls.Website.value}}
+    </p>
+</div>
+<div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+        Email invalid
+    </div>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+        Password invalid
+    </div>
+    <div *ngIf="password.value !== confirmPass.value">
+        confirm pass: invalid
+    </div>
+    <div *ngIf="nickName.invalid && (nickName.dirty || nickName.touched) ">
+        nickname: invalid
+    </div>
+    <div *ngIf="phoneNum.invalid && (phoneNum.dirty || phoneNum.touched) ">
+        PhoneNumber: invalid
+    </div>
+</div>
