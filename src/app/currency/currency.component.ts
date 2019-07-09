@@ -22,13 +22,22 @@ export class CurrencyComponent implements OnInit {
         };
 
         const filterCallBack = ({value}) => value > 2;
-        const mapCallBack = ({currency, value}) => ({currency, value, icon: '😃'});
+        const mapCallBack = ({rates}) => {
+            const currency = Object.keys(rates)[0];
+            const value = rates[currency];
+
+            return {
+                currency,
+                value,
+                icon: '😃'
+            };
+        };
 
         const Observer = this.currencyService.Observer;
         Observer
         .pipe(
-            filter(filterCallBack),
-            map(mapCallBack)
+            map(mapCallBack),
+            filter(filterCallBack)
         )
         .subscribe({
             next: action,
