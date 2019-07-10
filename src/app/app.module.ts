@@ -12,7 +12,7 @@ import { CartComponent } from './cart/cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WishlistComponent } from './wishlist/wishlist.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CurrencyComponent } from './currency/currency.component';
 import { TaskOneComponent } from './task-1/task-1.component';
 
@@ -42,7 +42,8 @@ import { TaskOneComponent } from './task-1/task-1.component';
       { path: 'currency', component: CurrencyComponent},
       { path: 'registration', component: TaskOneComponent}
     ]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
