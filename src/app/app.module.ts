@@ -15,6 +15,10 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CurrencyComponent } from './currency/currency.component';
 import { TaskOneComponent } from './task-1/task-1.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewsComponent } from './news/news.component';
+import { ArticleComponent } from './article/article.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { TaskOneComponent } from './task-1/task-1.component';
     ShippingComponent,
     WishlistComponent,
     CurrencyComponent,
-    TaskOneComponent
+    TaskOneComponent,
+    DashboardComponent,
+    NewsComponent,
+    ArticleComponent,
+    ErrorComponent
   ],
   imports: [
     HttpClientModule,
@@ -40,7 +48,12 @@ import { TaskOneComponent } from './task-1/task-1.component';
       { path: 'shipping', component: ShippingComponent},
       { path: 'wishlist', component: WishlistComponent},
       { path: 'currency', component: CurrencyComponent},
-      { path: 'registration', component: TaskOneComponent}
+      { path: 'registration', component: TaskOneComponent},
+      { path: 'dashboard', component: DashboardComponent},
+      { path: 'dashboard/news', component: NewsComponent},
+      { path: 'dashboard/news/:articleId', component: ArticleComponent},
+      { path: 'error', component: ErrorComponent},
+      { path: '**', redirectTo: 'error'},
     ]),
     ReactiveFormsModule,
     FormsModule
