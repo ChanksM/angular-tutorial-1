@@ -29,4 +29,10 @@ export class EmployeesService {
       });
     }));
   }
+
+  createCustomer(customer) {
+    return this.http
+    .post(`${this.host}/create`, customer)
+    .subscribe();
+  }
 }
