@@ -40,9 +40,4 @@ export class TaskOneComponent implements OnInit {
     get phoneNum() {
         return this.taskOneForm.get('PhoneNumber') as FormControl;
     }
-
-    // numberChecker() {
-    //     const phone = this.phoneNum.value;
-    //     return phone.startsWith('+380') && phone.length === 9;
-    // }
 }
