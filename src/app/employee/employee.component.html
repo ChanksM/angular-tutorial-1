@@ -2,3 +2,21 @@
 <h1>name: {{myUser?.name}}</h1>
 <h1>salary: {{myUser?.salary}}</h1>
 <h1>age: {{myUser?.age}}</h1>
+
+<form [formGroup]="updateForm">
+    <div>
+        <label>Name</label>
+        <input type="text" formControlName="name" required>
+    </div>
+    <div>
+        <label>Salary</label>
+        <input type="number" formControlName="salary" required>
+    </div>
+    <div>
+        <label>Age</label>
+        <input type="number" formControlName="age" required>
+    </div>
+    <div>
+        <button [disabled]="updateForm.status !== 'VALID'" (click)="updateUserInfo()">Update</button>
+    </div>
+</form>
