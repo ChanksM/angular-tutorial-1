@@ -13,9 +13,9 @@ export class ArticleComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(value => {
       const articleId = +value.get('articleId');
       this.article = this.newsService.getArticleById(articleId);
-      if (!this.article) {
-        router.navigate(['error']);
-      }
+      // if (!this.article) {
+      //   router.navigate(['error']);
+      // }
     });
   }
 

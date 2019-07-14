@@ -25,6 +25,7 @@ import { GuardComponent } from './guard/guard.component';
 import { AdminGuard } from './admin.guard';
 import { EmployeesComponent } from './employees/employees.component';
 import { CustomerComponent } from './customer/customer.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CustomerComponent } from './customer/customer.component';
     AdminComponent,
     GuardComponent,
     EmployeesComponent,
-    CustomerComponent
+    CustomerComponent,
+    EmployeeComponent
   ],
   imports: [
     HttpClientModule,
@@ -67,6 +69,7 @@ import { CustomerComponent } from './customer/customer.component';
       { path: 'guard', data: {name: 'Guard'}, component: GuardComponent},
       { path: 'employees', data: {name: 'Employees'}, component: EmployeesComponent},
       { path: 'employees/register', data: {name: 'Register'}, component: CustomerComponent},
+      { path: 'employees/:id', data: {name: 'User By ID'}, component: EmployeeComponent},
       { path: 'admin', data: {name: 'Admin'}, component: AdminComponent, canActivate: [AdminGuard]},
       { path: '**', redirectTo: 'error'},
     ]),
