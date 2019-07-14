@@ -54,4 +54,8 @@ export class EmployeesService {
   updateUserInfo(value, id) {
     return this.http.put(`${this.host}/update/${id}`, value);
   }
+
+  deleteUser(id) {
+    return this.http.delete(`${this.host}/delete/${id}`);
+  }
 }

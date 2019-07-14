@@ -57,4 +57,12 @@ export class EmployeeComponent implements OnInit {
       this.router.navigate(['/employees']);
     });
   }
+
+  deleteUser() {
+    this.employeesService.deleteUser(this.userId)
+    .subscribe()
+    .add(() => {
+      this.router.navigate(['/employees']);
+    });
+  }
 }
