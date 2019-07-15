@@ -26,7 +26,8 @@ import { AdminGuard } from './admin.guard';
 import { EmployeesComponent } from './employees/employees.component';
 import { CustomerComponent } from './customer/customer.component';
 import { EmployeeComponent } from './employee/employee.component';
-
+import { MenuComponent } from './menu/menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,12 +49,14 @@ import { EmployeeComponent } from './employee/employee.component';
     GuardComponent,
     EmployeesComponent,
     CustomerComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    MenuComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', data: {name: 'Home'}, component: ProductListComponent},
       { path: 'products/:productId', data: {name: 'Products'}, component: ProductDetailsComponent},
