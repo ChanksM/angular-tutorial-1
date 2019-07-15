@@ -28,6 +28,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AnimationsComponent } from './animations/animations.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EmployeesComponent,
     CustomerComponent,
     EmployeeComponent,
-    MenuComponent
+    MenuComponent,
+    AnimationsComponent
   ],
   imports: [
     HttpClientModule,
