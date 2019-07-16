@@ -16,5 +16,4 @@ export class NewsComponent implements OnInit {
   get articles() {
     return this.newsService.getArticles();
   }
-
 }
