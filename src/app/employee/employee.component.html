@@ -18,6 +18,14 @@
     </div>
     <div>
         <button [disabled]="updateForm.status !== 'VALID'" (click)="updateUserInfo()">Update</button>
-        <button (click)="deleteUser()">Delete User</button>
+        <button (click)="popUp()">Delete User</button>
     </div>
 </form>
+
+<div class="pop-up" *ngIf="popUpCheck">
+    <h4>
+        are you sure want to remove user?
+    </h4>
+    <button (click)="deleteUser()">Delete</button>
+    <button (click)="popUp()">Cancel</button>
+</div>

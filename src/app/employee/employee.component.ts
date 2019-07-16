@@ -17,6 +17,7 @@ export class EmployeeComponent implements OnInit {
   };
   updateForm;
   userId;
+  popUpCheck = false;
   constructor(private employeesService: EmployeesService, private activatedRoute: ActivatedRoute, private router: Router,
               private formBuilder: FormBuilder) {
     this.updateForm = this.formBuilder.group({
@@ -64,5 +65,9 @@ export class EmployeeComponent implements OnInit {
     .add(() => {
       this.router.navigate(['/employees']);
     });
+  }
+
+  popUp() {
+    this.popUpCheck = !this.popUpCheck;
   }
 }
